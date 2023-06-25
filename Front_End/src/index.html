@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Book Catalog</title>
+
+</head>
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" id="navBar" style="z-index: 999;background-color: white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Book Catalog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Authors</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="mt-5 pt-5 mx-3">
+
+<!--    All Books Section-->
+    <section class="d-flex flex-wrap container-fluid justify-content-center" id="mainSecBooks" style="gap: 50px">
+
+    </section>
+
+<!--    Single Book Details Section -->
+    <section class="container" id="bookDetailsSec">
+        <div class="row">
+            <aside id="imgAside" class="col-lg-4">
+                <img src="" id="asideImage" class="img-fluid rounded" alt="image" style="height: 400px">
+            </aside>
+
+            <div class="col-lg-6 mt-sm-3 mt-lg-0">
+                <div class="d-flex">
+                    <h6 class="font-weight-bold">Publish Year - </h6>
+                    <h6 class="text-muted" id="publishYear"></h6>
+                </div>
+
+                <div class="d-flex mt-2">
+                    <h6 class="font-weight-bold">Author - </h6>
+                    <h6 class="text-muted" id="authorName"></h6>
+                </div>
+
+                <div class="d-flex mt-2 mb-3">
+                    <h6 class="font-weight-bold">Book Price -    </h6>
+                    <h6 class="text-muted" id="bookPrice"></h6>
+                </div>
+
+                <p id="bookDesc">
+
+                </p>
+
+                <div class="d-flex justify-content-around col-6">
+                    <button type="button" class="btn btn-outline-success" id="btnUpdate" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+                    <button type="button" class="btn btn-outline-danger" id="btnDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="idOfBook" class="col-form-label">Book Id</label>
+                            <input type="text" class="form-control" id="idOfBook">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nameOfBook" class="col-form-label">Book Name</label>
+                            <input type="text" class="form-control" id="nameOfBook">
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPrice" class="col-form-label">new Price</label>
+                            <input type="text" class="form-control" id="newPrice">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdateOnModel">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    Add New Book-->
+    <section class="container" id="addNewBookSec">
+        <form class="col-12 d-flex flex-column align-items-center">
+            <div class="mb-3 col-6">
+                <label for="bookIdInput" class="form-label">Book ID</label>
+                <input type="text" class="form-control" id="bookIdInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="bookNameInput" class="form-label">Book Name</label>
+                <input type="text" class="form-control" id="bookNameInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="bookAuthorInput" class="form-label">Book Author</label>
+                <input type="text" class="form-control" id="bookAuthorInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="yearInput" class="form-label">Publish year</label>
+                <input type="number" class="form-control" id="yearInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="descriptionInput" class="form-label">Description</label>
+                <input type="text" class="form-control" id="descriptionInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="genreInput" class="form-label">Genre</label>
+                <input type="text" class="form-control" id="genreInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="priceInput" class="form-label">Price</label>
+                <input type="text" class="form-control" id="priceInput">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="imageInput" class="form-label">image</label>
+                <input type="file" class="form-control" id="imageInput">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </section>
+
+</main>
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/scripts.js"></script>
+
+</body>
+</html>

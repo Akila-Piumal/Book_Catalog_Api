@@ -1,0 +1,30 @@
+#navBar {
+    box-shadow: 20px -5px 7px 1px #000000;
+}
+.card{
+    position: relative;
+    width: 300px;
+    height: 440px;
+    /*background-color: #000;*/
+    border-radius: 8px;
+    transition: transform .5s;
+    /*box-shadow: 20px -5px 7px 1px #000000;*/
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.card::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: scaleY(0.75);
+    transform-origin: bottom;
+    /*background: linear-gradient(transparent, rgba(252, 247, 247, 0.4), #e7dddd);*/
+    transition: transform 0.25s;
+}
+
+.card:hover::before{
+    transform: scaleY(1);
+}
