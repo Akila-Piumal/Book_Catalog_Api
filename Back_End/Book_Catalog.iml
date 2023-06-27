@@ -16,7 +16,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="Book_Catalog" value="a4d01bcf-81d6-443a-b31e-7ca7f76b1d78" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>

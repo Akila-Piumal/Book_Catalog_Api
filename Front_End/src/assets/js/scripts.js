@@ -54,6 +54,8 @@ function setBookToCards(data){
    }
 }
 
+// ==================================================================
+
 // Get the Clicked Book ID
 function getSelectedBookId(object){
    let bookId=$(object).parent().parent().children(':eq(0)').children(':eq(0)').text();
@@ -85,8 +87,11 @@ function setBookDetails(data){
    $('#asideImage').attr("src",data.imgUrl);
    $('#publishYear').text(data.year);
    $('#authorName').text(data.author);
-   $('#bookPrice').text(data.price);
+   $('#bookPrice').text(data.price.toFixed(2));
    $('#bookDesc').text(data.description);
+   $('#newPriceDiv').css('display','none');
+   $('#btnUpdatePrice').css('display','none');
+   $('#btnCancel').css('display','none');
 }
 
 // Click the delete button
@@ -127,25 +132,37 @@ $('#btnDelete').click(function (){
 
 // Click the update button
 $('#btnUpdate').click(function (){
-   let bookId=localStorage.getItem("bookId");
-   let bookName=localStorage.getItem("bookname");
 
-   $('#idOfBook').val(bookId);
-   $('#nameOfBook').val(bookName);
+   $('#btnUpdate').css('display','none');
+   $('#btnDelete').css('display','none');
+
+   $('#newPriceDiv').css('display','block');
+   $('#btnUpdatePrice').css('display','block');
+   $('#btnCancel').css('display','block');
 })
 
-// Update
-$('#btnUpdateOnModel').click(function (){
-   let bookId=$('#idOfBook').val();
-   let price=$('#newPrice').val();
+// Click event to update price button
+$('#btnUpdatePrice').click(function (){
+   let bookId=localStorage.getItem("bookId");
+   let price=$('#newlyPrice').val();
+
    $.ajax({
       url:baseUrl+"book?price="+price+"&bookId="+bookId,
       method:"put",
       success:function (resp){
+         $('#btnUpdate').css('display','block');
+         $('#btnDelete').css('display','block');
+
+         getBookDetails(localStorage.getItem("bookId"));
+         $('#newlyPrice').val("")
+         $('#newPriceDiv').css('display','none');
+         $('#btnUpdatePrice').css('display','none');
+         $('#btnCancel').css('display','none');
+
          Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Your work has been saved',
+            title: 'Price Updated',
             showConfirmButton: false,
             timer: 1500
          })
@@ -154,4 +171,20 @@ $('#btnUpdateOnModel').click(function (){
          console.log("error");
       }
    })
+})
+
+// Cancel the Update button
+$('#btnCancel').click(function (){
+   $('#newlyPrice').val("")
+   $('#newPriceDiv').css('display','none');
+   $('#btnUpdatePrice').css('display','none');
+   $('#btnCancel').css('display','none');
+
+   $('#btnUpdate').css('display','block');
+   $('#btnDelete').css('display','block');
+})
+
+$('#btnHome').click(function (){
+   $('#bookDetailsSec').css('display','none');
+   $('.card').css('display','block');
 })
