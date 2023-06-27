@@ -64,6 +64,7 @@ function getSelectedBookId(object){
 
    $('.card').css('display','none');
    $('#bookDetailsSec').css('display','block');
+   $('#btnHome2').css('display','none');
 
    getBookDetails(bookId);
 }
