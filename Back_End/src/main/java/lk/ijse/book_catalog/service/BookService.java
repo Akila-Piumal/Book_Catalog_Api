@@ -14,4 +14,6 @@ public interface BookService {
     boolean deleteById(String bookId);
 
     boolean updateById(double price,String bookId);
+
+    void saveBook(BookDTO bookDTO);
 }

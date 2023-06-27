@@ -45,5 +45,11 @@ public class BookServiceImpl implements BookService {
         return rowCount>0;
     }
 
+    @Override
+    public void saveBook(BookDTO bookDTO) {
+        Book book = mapper.map(bookDTO, Book.class);
+        repo.save(book);
+    }
+
 
 }

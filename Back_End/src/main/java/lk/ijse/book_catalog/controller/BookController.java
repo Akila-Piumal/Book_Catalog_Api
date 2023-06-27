@@ -22,6 +22,13 @@ public class BookController {
         return new ResponseUtil("200","Success",allBooks);
     }
 
+    @PostMapping
+    public ResponseUtil saveBook(@RequestBody BookDTO bookDTO){
+        System.out.println(bookDTO.getImgUrl());
+        service.saveBook(bookDTO);
+        return new ResponseUtil("200","Book Added",null);
+    }
+
     @GetMapping(params = "bookId")
     public ResponseUtil getBookById(String bookId){
         BookDTO book = service.getBookById(bookId);

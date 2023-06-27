@@ -17,7 +17,7 @@ public class Book {
     @Id
     private String bookId;
     private String bookName;
-    private String Author;
+    private String authorName;
     private String genre;
     private String year;
     private boolean availability;

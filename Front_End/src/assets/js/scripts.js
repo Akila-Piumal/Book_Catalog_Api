@@ -30,6 +30,7 @@ function setBookToCards(data){
             <div class="row g-0">
                 <div class="col-md-12 d-flex justify-content-center">
                     <img src="`+book.imgUrl+`" class="img-fluid rounded-start" alt="image" style="height: 165px">
+                 
                 </div>
                 <div class="col-md-12 d-flex flex-column align-content-between">
                     <div class="card-body">
@@ -86,7 +87,7 @@ function getBookDetails(bookId){
 function setBookDetails(data){
    $('#asideImage').attr("src",data.imgUrl);
    $('#publishYear').text(data.year);
-   $('#authorName').text(data.author);
+   $('#authorName').text(data.authorName);
    $('#bookPrice').text(data.price.toFixed(2));
    $('#bookDesc').text(data.description);
    $('#newPriceDiv').css('display','none');
@@ -196,12 +197,106 @@ $('#btnAddNew').click(function (){
    $('#btnAddNew').css('display','none');
    $('#bookDetailsSec').css('display','none');
    $('#addNewBookSec').css('display','block');
+   $('#btnHome2').css('display','block');
 })
 
 // Add button in add form
 
-// $('#btnAdd').click(function (){
-//    $.ajax({
-//       url:baseUrl+
-//    })
-// })
+$('#btnAdd').click(function (){
+
+   //----------- Uploading Image   ---------------------------------------
+
+   var imgData=new FormData();
+
+   let bookImageFile = $('#imageInput')[0].files[0];
+   let bookImageFileName=$('#imageInput')[0].files[0].name;
+
+   imgData.append("book",bookImageFile,bookImageFileName);
+
+   var imgUrl;
+
+   $.ajax({
+      url:baseUrl+"upload",
+      method:'post',
+      async:false,
+      contentType:false,
+      processData:false,
+      data:imgData,
+      success:function (resp){
+         imgUrl=baseUrl+resp.data.bookImgPath;
+      },
+      error:function (error){
+         alert(error.responseText.message);
+      }
+   })
+
+   //---------------- Image Uploading finished  -----------------------------
+
+   let bookId=$('#bookIdInput').val();
+   let bookName=$('#bookNameInput').val();
+   let Author=$('#bookAuthorInput').val();
+   let year=$('#yearInput').val();
+   let description=$('#descriptionInput').val();
+   let genre=$('#genreInput').val();
+   let price=$('#priceInput').val();
+
+   console.log("Image Url: "+imgUrl)
+
+   var book={
+      bookId:bookId,
+      bookName:bookName,
+      authorName:Author,
+      genre:genre,
+      year:year,
+      availability:true,
+      description:description,
+      imgUrl:"https://upload.wikimedia.org/wikipedia/en/6/6b/DaVinciCode.jpg",
+      price:price
+   }
+
+   $.ajax({
+      url:baseUrl+"book",
+      method:'post',
+      contentType: "application/json",
+      data: JSON.stringify(book),
+      dataType:'json',
+      success:function (resp){
+         Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Book Added',
+            showConfirmButton: false,
+            timer: 1500
+         })
+
+         $('#bookIdInput').val("");
+         $('#bookNameInput').val("");
+         $('#bookAuthorInput').val("");
+         $('#yearInput').val("");
+         $('#descriptionInput').val("");
+         $('#genreInput').val("");
+         $('#priceInput').val("");
+         $('#imageInput').val("");
+
+      },
+      error:function (error){
+         Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: JSON.parse(error.responseText).message,
+            showConfirmButton: false,
+            timer: 2000
+         })
+      }
+   })
+
+})
+
+$('#btnHome2').click(function (){
+   $('#bookDetailsSec').css('display','none');
+   $('#addNewBookSec').css('display','none');
+   $('#btnHome2').css('display','none');
+   $('.card').css('display','block');
+   $('#btnAddNew').css('display','block');
+   getAllBooks();
+})
