@@ -184,7 +184,24 @@ $('#btnCancel').click(function (){
    $('#btnDelete').css('display','block');
 })
 
+// Back to home buttton
 $('#btnHome').click(function (){
    $('#bookDetailsSec').css('display','none');
    $('.card').css('display','block');
 })
+
+// Add button in main sec
+$('#btnAddNew').click(function (){
+   $('.card').css('display','none');
+   $('#btnAddNew').css('display','none');
+   $('#bookDetailsSec').css('display','none');
+   $('#addNewBookSec').css('display','block');
+})
+
+// Add button in add form
+
+// $('#btnAdd').click(function (){
+//    $.ajax({
+//       url:baseUrl+
+//    })
+// })

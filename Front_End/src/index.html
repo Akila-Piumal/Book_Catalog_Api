@@ -97,40 +97,43 @@
 
 <!--    Add New Book-->
     <section class="container" id="addNewBookSec">
-        <form class="col-12 d-flex flex-column align-items-center">
-            <div class="mb-3 col-6">
+        <form class="row d-flex justify-content-center ">
+            <div class="col-12 text-center mb-3 mt-3">
+                <Legend class="font-weight-bolder text-muted">ADD BOOK</Legend>
+            </div>
+            <div class="mb-4 col-6">
                 <label for="bookIdInput" class="form-label">Book ID</label>
                 <input type="text" class="form-control" id="bookIdInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="bookNameInput" class="form-label">Book Name</label>
                 <input type="text" class="form-control" id="bookNameInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="bookAuthorInput" class="form-label">Book Author</label>
                 <input type="text" class="form-control" id="bookAuthorInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="yearInput" class="form-label">Publish year</label>
                 <input type="number" class="form-control" id="yearInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="descriptionInput" class="form-label">Description</label>
                 <input type="text" class="form-control" id="descriptionInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="genreInput" class="form-label">Genre</label>
                 <input type="text" class="form-control" id="genreInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="priceInput" class="form-label">Price</label>
-                <input type="text" class="form-control" id="priceInput">
+                <input type="number" class="form-control" id="priceInput">
             </div>
-            <div class="mb-3 col-6">
+            <div class="mb-4 col-6">
                 <label for="imageInput" class="form-label">image</label>
                 <input type="file" class="form-control" id="imageInput">
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="button" class="btn btn-primary mb-4 col-8" id="btnAdd">Add</button>
         </form>
     </section>
 

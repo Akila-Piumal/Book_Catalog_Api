@@ -9,6 +9,8 @@
     border-bottom: 1px solid white;
 }
 
+
+/*=================  Main sec  =============================*/
 .card{
     position: relative;
     width: 300px;
@@ -42,7 +44,7 @@
     margin-left: 60px;
 }
 
-
+/*==================Main Sec ends========================*/
 
 
 
@@ -99,3 +101,11 @@
 }
 
 /*======== Home Icon Ends =================*/
+
+
+/*=============  Add new book section  ===========================*/
+
+#addNewBookSec{
+    box-shadow: 0 0 1.5em rgb(171 169 169);
+    border-radius: 6px;
+}
